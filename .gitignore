@@ -1,0 +1,6 @@
+src/*.o
+a.out
+example/example
+example/*.o
+libkuzzle.so
+test

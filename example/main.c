@@ -14,8 +14,6 @@ extern const char* query(const struct Kuzzle*, const char*, const char*, const c
 
 int main() {
   struct Kuzzle* k = kuzzle(0x000000, 0x581D);
-  // printf("%d\n", k->host);
-  // printf("%d\n", k->port);
   printf("%d\n", connect(k));
   printf("%s\n", query(k, "POST", "_search", "index", "collection"));
  // printf("%s\n", info(k));

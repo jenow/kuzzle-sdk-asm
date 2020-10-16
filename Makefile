@@ -1,12 +1,13 @@
 SRC = src/kuzzle.s
 LD = ld
-# LD = gcc
+GCC = gcc
 ASM = nasm
 OBJ = $(SRC:.s=.o)
 NAME = libkuzzle.so
 ASMCFLAGS = -felf64 -g -i src/
 LDFLAGS = -shared -g
-# LDFLAGS = -shared -no-pie -g3
+
+CFLAGS = -W -Wall
 
 %.o: %.s
 	$(ASM) -o $@ $< $(ASMCFLAGS)
@@ -24,4 +25,7 @@ fclean: clean
 
 re: clean fclean all
 
-.PHONY: all clean fclean re
+example:
+	 $(GCC) $(CFLAGS) example/main.c -L. -lkuzzle -o example/example -Wl,-rpath=`pwd`
+
+.PHONY: all clean fclean re example
